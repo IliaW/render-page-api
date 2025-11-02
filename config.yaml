@@ -1,0 +1,18 @@
+env: "prod"
+log_level: "info"
+service_name: "render-page-api"
+port: "8080"
+version: "1.0.0"
+
+render_page_path: "/api/render" # render endpoint path
+headless_browser: true
+browsers_count: 3 # browser pool count
+browser_wait: "10s" # waiting for a browser instance when too many requests and browsers pool are empty
+render_timeout: "10s" # timeout for rendering a page
+enable_leakless: true # BUG. If you get a virus error, set false
+take_screenshot: false # if necessary, specify the path to the volume with screenshots in docker-compose.yaml
+
+http_server:
+  read_timeout: "10s"
+  write_timeout: "10s" # should be bigger than browser_wait + render_timeout
+  idle_timeout: "30s"

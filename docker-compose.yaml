@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  render-page-api:
+    image: render-api:latest
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./screenshots:/app/screenshots
+    restart: unless-stopped
